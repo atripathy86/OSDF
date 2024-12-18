@@ -18,14 +18,14 @@ services:
   fdp-origin:
     image: hub.opensciencegrid.org/pelican_platform/origin:v7.11.7
     ports:
-      - "80:8444"
+      #- "80:8444"
       #- "80:80"
       #- "443:443"
       - "8443:8443"
       #- "8444:8444"
       - "8000:8000"
     expose:
-      - 80 
+      #- 80 
       #- 443
       - 8443
       #- 8444
@@ -44,7 +44,8 @@ services:
         - PELICAN_SERVER_ISSUERURL=https://t.nationalresearchplatform.org/uhkoa
         - PELICAN_SERVER_STARTUPTIMEOUT=100s
         - PELICAN_SERVER_WEBPORT=8000
-        - PELICAN_SERVER_TLSCERTIFICATE=/etc/pelican/certs/fdp-origin.crt
+        #- PELICAN_SERVER_TLSCERTIFICATE=/etc/pelican/certs/fdp-origin.crt
+        - PELICAN_SERVER_TLSCERTIFICATE=/etc/pelican/certs/fullchain.pem
         - PELICAN_SERVER_HOSTNAME=fdp-origin.labs.hpe.com
         - PELICAN_SERVER_TLSKEY=/etc/pelican/certs/fdp-origin.key
         - PELICAN_ISSUERKEY=/etc/pelican/key/issuer.jwk
