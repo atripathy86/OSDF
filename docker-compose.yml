@@ -20,10 +20,12 @@ services:
     ports:
       #- "80:8444"
       - "8443:8443"
+      - "8442:8442"
       - "8000:8000"
     expose:
       #- 80 
       - 8443
+      - 8442
       - 8000
     container_name: fdp-cache
     restart: always
