@@ -18,11 +18,13 @@ services:
   fdp-cache:
     image: hub.opensciencegrid.org/pelican_platform/cache:v7.11.7
     ports:
-      - "80:8444"
+      #- "80:8444"
       - "8443:8443"
+      - "8000:8000"
     expose:
-      - 80 
+      #- 80 
       - 8443
+      - 8000
     container_name: fdp-cache
     restart: always
     command: serve  -f https://osdf-director.osg-htc.org 
@@ -34,9 +36,11 @@ services:
     environment:
         - PELICAN_ORIGIN_SELFTEST=false
         - NAMESPACEPREFIX=""
+        - PELICAN_SERVER_ISSUERURL=https://t.nationalresearchplatform.org/uhkoa
         - PELICAN_SERVER_STARTUPTIMEOUT=100s
         - PELICAN_SERVER_WEBPORT=8000
-        - PELICAN_SERVER_TLSCERTIFICATE=/etc/pelican/certs/fdp-cache.crt
+        #- PELICAN_SERVER_TLSCERTIFICATE=/etc/pelican/certs/fdp-cache.crt
+        - PELICAN_SERVER_TLSCERTIFICATE=/etc/pelican/certs/fullchain-cache.pem
         - PELICAN_SERVER_HOSTNAME=fdp-cache.labs.hpe.com
         - PELICAN_SERVER_TLSKEY=/etc/pelican/certs/fdp-cache.key
         - PELICAN_ISSUERKEY=/etc/pelican/key/issuer.jwk
