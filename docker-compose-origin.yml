@@ -38,10 +38,12 @@ services:
         - /var/pelican/jwks:/etc/pelican/key
         - /var/pelican/certs:/etc/pelican/certs
         - /var/pelican/shoverler:/etc/pelican/shoveler
+        - /var/pelican/server-web-passwd:/etc/pelican/server-web-passwd
+        - /var/pelican/logs:/var/log/pelican/
     environment:
         - PELICAN_ORIGIN_SELFTEST=false
         - NAMESPACEPREFIX=""
-        - PELICAN_SERVER_ISSUERURL=https://t.nationalresearchplatform.org/uhkoa
+        - PELICAN_SERVER_ISSUERURL=https://t.nationalresearchplatform.org/fdp-hpe
         - PELICAN_SERVER_STARTUPTIMEOUT=100s
         - PELICAN_SERVER_WEBPORT=8000
         #- PELICAN_SERVER_TLSCERTIFICATE=/etc/pelican/certs/fdp-origin.crt
