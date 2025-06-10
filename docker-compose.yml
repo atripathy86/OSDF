@@ -16,7 +16,7 @@
 
 services:
   fdp-cache:
-    image: hub.opensciencegrid.org/pelican_platform/cache:v7.11.7
+    image: hub.opensciencegrid.org/pelican_platform/cache:v7.16.5
     ports:
       #- "80:8444"
       - "8443:8443"
@@ -37,6 +37,7 @@ services:
         - /var/pelican/shoverler:/etc/pelican/shoveler
         - /var/pelican/server-web-passwd:/etc/pelican/server-web-passwd
         - /var/pelican/logs:/var/log/pelican/
+        #- /var/pelican/selfTest:/run/pelican/cache/namespace/pelican/monitoring/selfTest 
     environment:
         - PELICAN_ORIGIN_SELFTEST=false
         - NAMESPACEPREFIX=""
