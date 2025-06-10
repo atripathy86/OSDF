@@ -1,0 +1,39 @@
+Debug: true
+IssuerKey: "/etc/pelican/key/issuer.jwk"
+ 
+Server:
+  Hostname: fdp-origin.labs.hpe.com
+  WebPort: "8000"
+  TLSCertificate: /etc/pelican/certs/fullchain.pem
+  TLSKey: /etc/pelican/certs/fdp-origin.key
+  IssuerUrl: "https://t.nationalresearchplatform.org/fdp-hpe"
+ 
+Origin:
+  StorageType: "posix"
+  Port: "8443"
+ 
+  Exports:
+    - FederationPrefix: "/fdp-hpe"
+      Capabilities: ["Reads", "Writes", "Listings"]
+      StoragePrefix: "/mnt/origin"
+      IssuerUrls: ["https://t.nationalresearchplatform.org/fdp-hpe"]
+ 
+######################
+# OSDF Configuration #
+######################
+ 
+Xrootd:
+  Sitename: FDP_HP_OSDF_ORIGIN
+ 
+##########################
+# Optional Configuration #
+##########################
+ 
+Logging:
+  LogLocation: /var/log/pelican/pelican.log
+  Origin:
+    Ofs: "debug"
+    Scitokens: "debug"
+    Xrd: "debug"
+    Xrootd: "debug"
+
