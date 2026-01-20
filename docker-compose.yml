@@ -16,20 +16,22 @@
 
 services:
   fdp-cache:
-    image: hub.opensciencegrid.org/pelican_platform/cache:v7.16.5
+    #image: hub.opensciencegrid.org/pelican_platform/cache:v7.16.5
+    image: hub.opensciencegrid.org/pelican_platform/cache:v7.20.2
     ports:
       #- "80:8444"
-      - "8443:8443"
+      - "8444:8444"
+      #- "8443:8443"
       - "8442:8442"
-      - "8000:8000"
+      #- "8000:8000"
     expose:
       #- 80 
-      - 8443
+      - 8444
       - 8442
-      - 8000
+      #- 8000
     container_name: fdp-cache
     restart: always
-    command: serve  -f https://osdf-director.osg-htc.org 
+    command: serve  -f https://osg-htc.org 
     volumes: 
         - /mnt/store1:/cache
         - /var/pelican/jwks:/etc/pelican/key
@@ -39,11 +41,13 @@ services:
         - /var/pelican/logs:/var/log/pelican/
         #- /var/pelican/selfTest:/run/pelican/cache/namespace/pelican/monitoring/selfTest 
     environment:
-        - PELICAN_ORIGIN_SELFTEST=false
+      #- PELICAN_ORIGIN_SELFTEST=false
         - NAMESPACEPREFIX=""
         - PELICAN_SERVER_ISSUERURL=https://t.nationalresearchplatform.org/fdp-hpe
         - PELICAN_SERVER_STARTUPTIMEOUT=100s
-        - PELICAN_SERVER_WEBPORT=8000
+        #- PELICAN_CACHE_PORT=8442
+          #Default Port 8444
+        #- PELICAN_SERVER_WEBPORT=8000
         #- PELICAN_SERVER_TLSCERTIFICATE=/etc/pelican/certs/fdp-cache.crt
         - PELICAN_SERVER_TLSCERTIFICATE=/etc/pelican/certs/fullchain-cache.pem
         - PELICAN_SERVER_HOSTNAME=fdp-cache.labs.hpe.com
