@@ -16,7 +16,9 @@
 
 services:
   fdp-origin:
-    image: hub.opensciencegrid.org/pelican_platform/origin:v7.16.5
+    #image: hub.opensciencegrid.org/pelican_platform/origin:v7.16.5
+    image: hub.opensciencegrid.org/pelican_platform/origin:latest
+    pull_policy: always
     ports:
       #- "80:8444"
       #- "80:80"
@@ -32,7 +34,8 @@ services:
       - 8000
     container_name: fdp-origin
     restart: always
-    command: serve  -f https://osdf-director.osg-htc.org -v /mnt/origin:/fdp-hpe 
+    #command: serve  -f https://osdf-director.osg-htc.org -v /mnt/origin:/fdp-hpe 
+    command: serve    
     volumes: 
         - /mnt/store1:/mnt/origin
         - /var/pelican/pelican.yaml:/etc/pelican/pelican.yaml

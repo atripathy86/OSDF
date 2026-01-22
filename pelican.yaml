@@ -1,12 +1,15 @@
-Debug: true
+#Debug: true
+Debug: false
 IssuerKey: "/etc/pelican/key/issuer.jwk"
+Federation: 
+  DiscoveryUrl: https://osg-htc.org
  
 Server:
   Hostname: fdp-origin.labs.hpe.com
   WebPort: "8000"
   TLSCertificate: /etc/pelican/certs/fullchain.pem
   TLSKey: /etc/pelican/certs/fdp-origin.key
-  IssuerUrl: "https://t.nationalresearchplatform.org/fdp-hpe"
+  #IssuerUrl: "https://t.nationalresearchplatform.org/fdp-hpe"
  
 Origin:
   StorageType: "posix"
@@ -16,7 +19,8 @@ Origin:
     - FederationPrefix: "/fdp-hpe"
       Capabilities: ["Reads", "Writes", "Listings"]
       StoragePrefix: "/mnt/origin"
-      IssuerUrls: ["https://t.nationalresearchplatform.org/fdp-hpe"]
+      #IssuerUrls: ["https://t.nationalresearchplatform.org/fdp-hpe"]
+      IssuerUrls: ["https://t.nationalresearchplatform.org/fdp-hpe", "https://t.nationalresearchplatform.org/fdp-hpe1", "https://t.nationalresearchplatform.org/fdp-hpe2", "https://t.nationalresearchplatform.org/fdp-hpe3", "https://t.nationalresearchplatform.org/fdp-hpe4"]
  
 ######################
 # OSDF Configuration #
@@ -32,8 +36,12 @@ Xrootd:
 Logging:
   LogLocation: /var/log/pelican/pelican.log
   Origin:
-    Ofs: "debug"
-    Scitokens: "debug"
-    Xrd: "debug"
-    Xrootd: "debug"
+    #Ofs: "debug"
+    #Scitokens: "debug"
+    #Xrd: "debug"
+    #Xrootd: "debug"
+    Ofs: "info"
+    Scitokens: "info"
+    Xrd: "info"
+    Xrootd: "info"
 
